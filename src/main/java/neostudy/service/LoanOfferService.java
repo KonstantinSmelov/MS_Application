@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import neostudy.dto.LoanApplicationRequestDTO;
 import neostudy.dto.LoanOfferDTO;
+import neostudy.exception.PreScoringException;
 import neostudy.feignclient.DealClient;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,10 @@ import java.util.List;
 public class LoanOfferService {
 
     private final DealClient dealClient;
+    private final Scoring scoring;
 
-    public List<LoanOfferDTO> gettingLoanOfferDTOList(LoanApplicationRequestDTO loanApplicationRequestDTO) {
+    public List<LoanOfferDTO> gettingLoanOfferDTOList(LoanApplicationRequestDTO loanApplicationRequestDTO) throws PreScoringException {
+        scoring.checkForPreScoringErrors(loanApplicationRequestDTO);
         List<LoanOfferDTO> loanOfferDTOList = dealClient.getLoanOfferListFromDeal(loanApplicationRequestDTO);
         log.debug("creatingLoanOfferDTOList(): Получен loanOfferDTOList из Deal: {}", loanOfferDTOList);
 

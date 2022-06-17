@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import neostudy.dto.LoanApplicationRequestDTO;
 import neostudy.dto.LoanOfferDTO;
+import neostudy.exception.PreScoringException;
 import neostudy.service.LoanOfferService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +25,9 @@ public class ApplicationController {
 
     @ApiOperation(value = "Запрос кредитных предложений")
     @PostMapping
-    public ResponseEntity<List<LoanOfferDTO>> getApplication(@ApiParam(value = "Предварительные данные для расчётов") @Valid @RequestBody LoanApplicationRequestDTO loanApplicationRequestDTO) {
+    public ResponseEntity<List<LoanOfferDTO>> getLoanOffers(@ApiParam(value = "Предварительные данные для расчётов") @RequestBody LoanApplicationRequestDTO loanApplicationRequestDTO) throws PreScoringException {
         log.debug("/application -> получено LoanApplicationRequestDTO {}", loanApplicationRequestDTO);
+
         return ResponseEntity.ok(loanOfferService.gettingLoanOfferDTOList(loanApplicationRequestDTO));
     }
 

@@ -24,4 +24,10 @@ public class ScoringExceptionHandIer {
 
         return new ResponseEntity<>(errorsList.toString(), HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS);
     }
+
+    @ExceptionHandler(PreScoringException.class)
+    public ResponseEntity<String> preScoringInvalid(PreScoringException e) {
+
+        return new ResponseEntity<>(e.getErrorList().toString(), HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS);
+    }
 }
