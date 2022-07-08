@@ -16,10 +16,10 @@ import java.util.List;
 public class LoanOfferService {
 
     private final DealClient dealClient;
-    private final Scoring scoring;
+    private final PreScoring preScoring;
 
     public List<LoanOfferDTO> gettingLoanOfferDTOList(LoanApplicationRequestDTO loanApplicationRequestDTO) throws PreScoringException {
-        scoring.checkForPreScoringErrors(loanApplicationRequestDTO);
+        preScoring.checkForPreScoringErrors(loanApplicationRequestDTO);
         List<LoanOfferDTO> loanOfferDTOList = dealClient.getLoanOfferListFromDeal(loanApplicationRequestDTO);
         log.debug("creatingLoanOfferDTOList(): Получен loanOfferDTOList из Deal: {}", loanOfferDTOList);
 

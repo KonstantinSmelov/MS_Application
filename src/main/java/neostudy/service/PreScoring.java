@@ -1,6 +1,5 @@
 package neostudy.service;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import neostudy.dto.LoanApplicationRequestDTO;
 import neostudy.exception.PreScoringException;
@@ -16,7 +15,7 @@ import java.util.regex.Pattern;
 
 @Service
 @Slf4j
-public class Scoring {
+public class PreScoring {
 
     public void checkForPreScoringErrors(LoanApplicationRequestDTO loanApplicationRequestDTO) throws PreScoringException {
 
@@ -30,52 +29,52 @@ public class Scoring {
 
 
         matcher = nameSurnamePattern.matcher(loanApplicationRequestDTO.getFirstName());
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             errorsList.add("\nИмя не должно быть короче 2 и длиннее 30 символов и должно состоять из букв и цифр");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
         matcher = nameSurnamePattern.matcher(loanApplicationRequestDTO.getLastName());
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             errorsList.add("\nФамилия не должна быть короче 2 и длиннее 30 символов и должна состоять из букв и цифр");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
         matcher = middlenamePattern.matcher(loanApplicationRequestDTO.getMiddleName());
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             errorsList.add("\nОтчества или нет, или оно не должно быть короче 2 и длинее 30 символов и должно состоять из букв и цифр");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
-        if(0 >= loanApplicationRequestDTO.getAmount().compareTo(BigDecimal.valueOf(10000))) {
+        if (0 >= loanApplicationRequestDTO.getAmount().compareTo(BigDecimal.valueOf(10000))) {
             errorsList.add("\nКредит не может быть меньше 10000");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
-        if(loanApplicationRequestDTO.getTerm() < 6) {
+        if (loanApplicationRequestDTO.getTerm() < 6) {
             errorsList.add("\nСрок кредита не менее 6 месяцев");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
         matcher = passportNumberPattern.matcher(loanApplicationRequestDTO.getPassportNumber());
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             errorsList.add("\nНомер паспорта должен содержать 6 цифр");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
         matcher = passportSeriesPattern.matcher(loanApplicationRequestDTO.getPassportSeries());
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             errorsList.add("\nСерия паспорта должена содержать 4 цифры");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
         matcher = emailPattern.matcher(loanApplicationRequestDTO.getEmail());
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             errorsList.add("\nНекорректная почта");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }
 
-        if(0 <= loanApplicationRequestDTO.getBirthdate().plus(18, ChronoUnit.YEARS).compareTo(LocalDate.now())) {
+        if (0 <= loanApplicationRequestDTO.getBirthdate().plus(18, ChronoUnit.YEARS).compareTo(LocalDate.now())) {
             errorsList.add("\nВозраст меньше 18 лет");
             log.info("checkForPreScoringErrors():  добавление в errorsList: {}", errorsList.get(errorsList.size() - 1));
         }

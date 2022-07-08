@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class ScoringTest {
+class PreScoringTest {
 
     @Autowired
     private MockMvc mockMvc;

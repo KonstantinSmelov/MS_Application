@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +26,6 @@ public class ApplicationController {
     @PostMapping
     public ResponseEntity<List<LoanOfferDTO>> getLoanOffers(@ApiParam(value = "Предварительные данные для расчётов") @RequestBody LoanApplicationRequestDTO loanApplicationRequestDTO) throws PreScoringException {
         log.debug("/application -> получено LoanApplicationRequestDTO {}", loanApplicationRequestDTO);
-
         return ResponseEntity.ok(loanOfferService.gettingLoanOfferDTOList(loanApplicationRequestDTO));
     }
 

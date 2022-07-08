@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name="deal-service-client", url = "${URL.toDeal}")
+@FeignClient(name = "deal-service-client", url = "${service.deal.url}")
 public interface DealClient {
 
     @PostMapping("/deal/application")
