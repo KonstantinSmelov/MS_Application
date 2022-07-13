@@ -38,7 +38,7 @@ class PreScoringTest {
         mockMvc.perform(post("/application")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
-                .andExpect(status().is(451));
+                .andExpect(status().is(409));
     }
 
     @Test
