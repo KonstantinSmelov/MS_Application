@@ -1,4 +1,4 @@
-# MS-Conveyor
+# MS-Application
 
 [![Build status](https://github.com/KonstantinSmelov/Application/actions/workflows/maven.yml/badge.svg)](https://github.com/KonstantinSmelov/Application/actions/workflows/maven.yml)
 [![codecov](https://codecov.io/gh/KonstantinSmelov/Application/branch/mvp6/graph/badge.svg)](https://codecov.io/gh/KonstantinSmelov/Application)
