@@ -1,7 +1,15 @@
-# MS-Application
+# Микросервис №3 - Application
 
-[![Build status](https://github.com/KonstantinSmelov/Application/actions/workflows/maven.yml/badge.svg)](https://github.com/KonstantinSmelov/Application/actions/workflows/maven.yml)
-[![codecov](https://codecov.io/gh/KonstantinSmelov/Application/branch/mvp6/graph/badge.svg)](https://codecov.io/gh/KonstantinSmelov/Application)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=KonstantinSmelov_Application&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=KonstantinSmelov_Application)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=KonstantinSmelov_Application&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=KonstantinSmelov_Application)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=KonstantinSmelov_Application&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=KonstantinSmelov_Application)
+ ***Функция:*** прексоринг заявки на кредит
+
+Входит в состав микросервисного приложения "Кредитный конвеер", состоящего из 5 микросервисов:
+
+* [Микросервис №1 Conveyor (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Conveyor)
+* [Микросервис №2 Deal (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Deal)
+* [Микросервис №4 Dossier (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Dossier)
+* [Микросервис №5 Gateway (сслыка на репозиторий)](https://github.com/KonstantinSmelov/MS_Gateway)
+
+
+***Общая архитектура:***
+
+![Alt-текст](https://i.postimg.cc/GhvqX3xN/1.png)
